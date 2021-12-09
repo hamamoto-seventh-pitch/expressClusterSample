@@ -6,6 +6,18 @@ const app = expless();
 
 const numCpu = os.cpus().length;
 
+const userCount = process.env.USER_COUNT;
+
+app.get('/', (req, res) => {
+    res.send('Hello World!' + userCount);
+});
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log('Listening on port', port);
+});
+
+
 app.get('/', (req, res) => {
     for (let i = 0; i < 1e8; i++) {
         // task
